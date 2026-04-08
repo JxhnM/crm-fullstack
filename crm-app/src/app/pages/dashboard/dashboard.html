@@ -30,6 +30,7 @@
     </section>
 
     <!-- STAKEHOLDERS -->
+    <p>TEST: {{ stakeholders.length }}</p>
     <section class="crm-card">
       <h2>👥 Clientes y Proveedores</h2>
 
@@ -45,8 +46,8 @@
             <th>Estado</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let s of stakeholders; trackBy: trackById">
+        <tbody *ngIf="stakeholders && stakeholders.length > 0">
+           <tr *ngFor="let s of stakeholders">
             <td>
               <span 
                 class="badge"
