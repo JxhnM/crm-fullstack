@@ -1,46 +1,22 @@
 .crm-container { font-family: 'Segoe UI', sans-serif; min-height: 100vh; background: #f0f2f5; }
-
 .crm-header {
-  background: #c0392b;
-  color: white;
-  padding: 16px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: #c0392b; color: white; padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
 }
-
 .crm-header h1 { margin: 0; font-size: 1.5rem; }
-
 .btn-logout {
-  background: white;
-  color: #c0392b;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+  background: white; color: #c0392b; border: none;
+  padding: 8px 18px; border-radius: 6px; cursor: pointer; font-weight: bold;
 }
-
-.crm-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  padding: 32px;
+.crm-menu {
+  display: flex; gap: 24px; padding: 60px; justify-content: center;
 }
-
 .crm-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: white; border-radius: 12px; padding: 48px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor: pointer;
+  text-align: center; transition: transform 0.2s;
+  min-width: 200px;
 }
-
-.crm-card h2 { margin-top: 0; color: #333; }
-
-table { width: 100%; border-collapse: collapse; }
-th { background: #f8f8f8; text-align: left; padding: 10px; font-size: 0.85rem; color: #666; }
-td { padding: 10px; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
-
-.badge { padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
-.cliente { background: #d4edda; color: #155724; }
-.proveedor { background: #cce5ff; color: #004085; }
+.crm-card:hover { transform: translateY(-4px); }
+.crm-card span { font-size: 3rem; }
+.crm-card h2 { margin: 16px 0 0; color: #333; }

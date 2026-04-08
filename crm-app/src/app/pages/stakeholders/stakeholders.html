@@ -1,0 +1,21 @@
+<div class="crm-container">
+  <header class="crm-header">
+    <h1>👥 Clientes y Proveedores</h1>
+    <button class="btn-back" (click)="volver()">← Volver</button>
+  </header>
+  <div class="crm-content">
+    <table>
+      <thead>
+        <tr><th>Tipo</th><th>Nombre</th><th>Correo</th><th>Estado</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of stakeholders">
+          <td><span class="badge" [class.cliente]="s.tipo === 'CLIENTE'" [class.proveedor]="s.tipo === 'PROOVEDOR'">{{ s.tipo }}</span></td>
+          <td>{{ s.nombre }}</td>
+          <td>{{ s.correo_electronico }}</td>
+          <td>{{ s.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

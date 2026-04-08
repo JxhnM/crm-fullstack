@@ -1,0 +1,21 @@
+<div class="crm-container">
+  <header class="crm-header">
+    <h1>📦 Productos</h1>
+    <button class="btn-back" (click)="volver()">← Volver</button>
+  </header>
+  <div class="crm-content">
+    <table>
+      <thead>
+        <tr><th>SKU</th><th>Nombre</th><th>Categoría</th><th>Precio</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productos">
+          <td>{{ p.codigo_sku }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.categoria }}</td>
+          <td>${{ p.precio }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

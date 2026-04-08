@@ -3,66 +3,14 @@
     <h1>CRM Dashboard</h1>
     <button class="btn-logout" (click)="cerrarSesion()">Cerrar Sesión</button>
   </header>
-
-  <div class="crm-grid">
-
-    <!-- PRODUCTOS -->
-    <section class="crm-card">
-      <h2>📦 Productos</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>SKU</th>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of productos">
-            <td>{{ p.codigo_sku }}</td>
-            <td>{{ p.nombre }}</td>
-            <td>{{ p.categoria }}</td>
-            <td>${{ p.precio }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- STAKEHOLDERS -->
-    <p>TEST: {{ stakeholders.length }}</p>
-    <section class="crm-card">
-      <h2>👥 Clientes y Proveedores</h2>
-
-      <!-- DEBUG (puedes borrarlo luego) -->
-      <p>Total: {{ stakeholders.length }}</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Tipo</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="stakeholders && stakeholders.length > 0">
-           <tr *ngFor="let s of stakeholders">
-            <td>
-              <span 
-                class="badge"
-                [class.cliente]="s.tipo === 'CLIENTE'"
-                [class.proveedor]="s.tipo === 'PROOVEDOR'">
-                {{ s.tipo }}
-              </span>
-            </td>
-            <td>{{ s.nombre }}</td>
-            <td>{{ s.correo_electronico }}</td>
-            <td>{{ s.estado }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
+  <div class="crm-menu">
+    <div class="crm-card" (click)="verProductos()">
+      <span>📦</span>
+      <h2>Productos</h2>
+    </div>
+    <div class="crm-card" (click)="verStakeholders()">
+      <span>👥</span>
+      <h2>Clientes y Proveedores</h2>
+    </div>
   </div>
 </div>
