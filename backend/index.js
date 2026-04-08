@@ -17,6 +17,8 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/auth', authRoutes);
+app.use('/api/productos', productosRoutes);
+app.use('/api/stakeholders', stakeholderRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {
