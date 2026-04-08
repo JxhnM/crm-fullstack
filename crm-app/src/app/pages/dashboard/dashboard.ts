@@ -16,7 +16,11 @@ export class DashboardComponent implements OnInit {
   stakeholders: any[] = [];
   private apiUrl = 'https://crm-backend-9qs1.onrender.com/api';
 
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     const token = this.authService.obtenerToken();
@@ -25,15 +29,27 @@ export class DashboardComponent implements OnInit {
       'Cache-Control': 'no-cache'
     });
 
+    // PRODUCTOS
     this.http.get<any[]>(`${this.apiUrl}/productos`, { headers }).subscribe({
-      next: (data) => { this.productos = data; console.log('Productos:', data); },
+      next: (data) => { 
+        this.productos = data; 
+        console.log('Productos:', data); 
+      },
       error: (err) => console.error('Error productos:', err)
     });
 
+    // STAKEHOLDERS
     this.http.get<any>(`${this.apiUrl}/stakeholders`, { headers }).subscribe({
-      next: (data) => { this.stakeholders = data.data; console.log('Stakeholders:', data); },
+      next: (data) => { 
+        this.stakeholders = data.data || []; 
+        console.log('Stakeholders:', data); 
+      },
       error: (err) => console.error('Error stakeholders:', err)
     });
+  }
+
+  trackById(index: number, item: any) {
+    return item._id;
   }
 
   cerrarSesion() {

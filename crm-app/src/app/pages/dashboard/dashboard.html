@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of productos">
+          <tr *ngFor="let p of productos; trackBy: trackById">
             <td>{{ p.codigo_sku }}</td>
             <td>{{ p.nombre }}</td>
             <td>{{ p.categoria }}</td>
@@ -32,6 +32,10 @@
     <!-- STAKEHOLDERS -->
     <section class="crm-card">
       <h2>👥 Clientes y Proveedores</h2>
+
+      <!-- DEBUG (puedes borrarlo luego) -->
+      <p>Total: {{ stakeholders.length }}</p>
+
       <table>
         <thead>
           <tr>
@@ -42,8 +46,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let s of stakeholders">
-            <td><span class="badge" [class.cliente]="s.tipo === 'CLIENTE'" [class.proveedor]="s.tipo === 'PROOVEDOR'">{{ s.tipo }}</span></td>
+          <tr *ngFor="let s of stakeholders; trackBy: trackById">
+            <td>
+              <span 
+                class="badge"
+                [class.cliente]="s.tipo === 'CLIENTE'"
+                [class.proveedor]="s.tipo === 'PROOVEDOR'">
+                {{ s.tipo }}
+              </span>
+            </td>
             <td>{{ s.nombre }}</td>
             <td>{{ s.correo_electronico }}</td>
             <td>{{ s.estado }}</td>
