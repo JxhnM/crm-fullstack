@@ -1,7 +1,56 @@
-<div class="container">
-  <div class="card">
-    <h2>¡Bienvenido al Dashboard!</h2>
-    <p>Has iniciado sesión correctamente.</p>
-    <button (click)="cerrarSesion()">Cerrar Sesión</button>
+<div class="crm-container">
+  <header class="crm-header">
+    <h1>CRM Dashboard</h1>
+    <button class="btn-logout" (click)="cerrarSesion()">Cerrar Sesión</button>
+  </header>
+
+  <div class="crm-grid">
+
+    <!-- PRODUCTOS -->
+    <section class="crm-card">
+      <h2>📦 Productos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of productos">
+            <td>{{ p.codigo_sku }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.categoria }}</td>
+            <td>${{ p.precio }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- STAKEHOLDERS -->
+    <section class="crm-card">
+      <h2>👥 Clientes y Proveedores</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of stakeholders">
+            <td><span class="badge" [class.cliente]="s.tipo === 'CLIENTE'" [class.proveedor]="s.tipo === 'PROOVEDOR'">{{ s.tipo }}</span></td>
+            <td>{{ s.nombre }}</td>
+            <td>{{ s.correo_electronico }}</td>
+            <td>{{ s.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
   </div>
-</div><p>dashboard works!</p>
+</div>
