@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const conectarDB = require('./src/config/db');
 const authRoutes = require('./src/routes/authRoutes');
+const productosRoutes = require('./src/routes/productosRoutes');
+const stakeholderRoutes = require('./src/routes/stakeholderRoutes');
 
 const app = express();
 
