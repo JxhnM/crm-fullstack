@@ -19,10 +19,21 @@ export class DashboardComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    this.http.get<any[]>(`${this.apiUrl}/productos`, { headers }).subscribe(data => this.productos = data);
-    this.http.get<any>(`${this.apiUrl}/stakeholders`, { headers }).subscribe(data => this.stakeholders = data.data);
+    const token = this.authService.obtenerToken();
+    const headers = new HttpHeaders({ 
+      Authorization: `Bearer ${token}`,
+      'Cache-Control': 'no-cache'
+    });
+
+    this.http.get<any[]>(`${this.apiUrl}/productos`, { headers }).subscribe({
+      next: (data) => { this.productos = data; console.log('Productos:', data); },
+      error: (err) => console.error('Error productos:', err)
+    });
+
+    this.http.get<any>(`${this.apiUrl}/stakeholders`, { headers }).subscribe({
+      next: (data) => { this.stakeholders = data.data; console.log('Stakeholders:', data); },
+      error: (err) => console.error('Error stakeholders:', err)
+    });
   }
 
   cerrarSesion() {
