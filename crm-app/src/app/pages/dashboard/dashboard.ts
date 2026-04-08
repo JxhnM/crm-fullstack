@@ -40,12 +40,16 @@ export class DashboardComponent implements OnInit {
 
     // STAKEHOLDERS
     this.http.get<any>(`${this.apiUrl}/stakeholders`, { headers }).subscribe({
-      next: (data) => { 
-        this.stakeholders = data.data || []; 
-        console.log('Stakeholders:', data); 
-      },
-      error: (err) => console.error('Error stakeholders:', err)
-    });
+  next: (data) => { 
+    console.log('Stakeholders RAW:', data);
+
+    // 🔥 prueba esto:
+    this.stakeholders = data.data || data.stakeholders || data || [];
+
+    console.log('Stakeholders FINAL:', this.stakeholders);
+  },
+  error: (err) => console.error('Error stakeholders:', err)
+});
   }
 
   trackById(index: number, item: any) {
